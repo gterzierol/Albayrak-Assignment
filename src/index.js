@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import TaskOne from './pages/TaskOne/TaskOne';
+import TaskTwo from './pages/TaskTwo/TaskTwo';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <App />
+        </Route>
+        <Route path="/task-1">
+          <TaskOne/>
+        </Route>
+        <Route path="/task-2">
+          <TaskTwo/>
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
