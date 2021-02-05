@@ -7,7 +7,7 @@ function App() {
 
   React.useEffect(() => {
     setLoaded("welcome loaded")
-  })
+  },[])
   
   return (
     <div className="App">

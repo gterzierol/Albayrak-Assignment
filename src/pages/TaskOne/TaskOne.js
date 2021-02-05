@@ -4,17 +4,15 @@ import './TaskOne.css'
 
 function TaskOne() {
     const [value, setValue] = React.useState("");
-    const [array, setArray] = React.useState();
     const [result, setResult] = React.useState()
 
     const onChangeHandler = (e) => {
         setValue(e.target.value)
-        console.log(array)
     }
 
     const findDuplicatedValue = () => {
         const arr = value.split("")
-        const tempResult = arr.find((item, index)=> arr.indexOf(item) != index)
+        const tempResult = arr.find((item, index)=> arr.indexOf(item) !== index)
         setResult(tempResult ? tempResult : -1)
     }
     return (
