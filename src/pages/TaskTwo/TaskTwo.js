@@ -7,6 +7,7 @@ import './TaskTwo.css'
 
 function TaskTwo() {
     const [state, setState] = React.useState([])
+    const [id, setId] = React.useState(null)
     const [searchValue, setSearchValue] = React.useState("");
     const{setValue} = useForm();
     
@@ -14,7 +15,7 @@ function TaskTwo() {
         <div className='App'>
             <div className='container'>
 
-                <Form state={state} setState={setState}/>
+                <Form state={state} setState={setState} id={id} setId={setId}/>
                 
                 <div className='table'>
                     <div className='table-header'>
@@ -34,7 +35,7 @@ function TaskTwo() {
                                 Soyisim
                             </div>
                             <div className='name-title'>
-                                Yaş
+                                Telefon
                             </div>
                             <div className='name-title'>
                                 işlemler
@@ -43,12 +44,14 @@ function TaskTwo() {
                         {state && state.filter((val)=>{
                             if(searchValue === ""){
                                 return val
-                            }else if(val.name.toLowerCase().includes(searchValue.toLowerCase())){
+                            }
+                            if(val.name.toLowerCase().includes(searchValue.toLowerCase())){
+                                console.log(val.name)
                                 return val
                             }
                         }).map((item,index)=> {
                                 return (
-                                    <TableItem setValue={setValue} key={index} name={state[index].name} surname={state[index].surname} phone={state[index].phone} index={index}/>
+                                    <TableItem setId={setId} setValue={setValue} key={index} name={item.name} surname={item.surname} phone={item.phone} index={index}/>
                                 )
                         })}
                     </div>

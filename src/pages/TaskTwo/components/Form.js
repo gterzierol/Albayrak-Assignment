@@ -1,21 +1,36 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 
-function Form({state, setState}) {
+function Form({state, setState, id, setId}) {
     const{register, handleSubmit, setValue} = useForm();
+
+    React.useEffect(()=> {
+        if(id){
+            console.log(id)
+            setValue('name',state[id].name)
+            setValue('surname',state[id].surname)
+            setValue('phone',state[id].phone)
+        }
+    },[id])
 
     const onSubmit = (data) => {
         if(data.name=== "" || data.surname === "" || data.phone === ""){
             return
-        }else{
-            setTimeout(()=>{
-                setState([...state, data])
-                setValue('name','')
-                setValue('surname','')
-                setValue('phone','')
-            },1)
         }
-        console.log(state)
+        if(id){
+            const newArr = state.slice(0,id);
+            const lastArr = state.slice(id+1);
+            const restArr = newArr.concat(data).concat(lastArr)
+            setState(restArr)
+            console.log(restArr)
+            setId(null)
+        }else{
+            setState([...state, data])
+            console.log(state)
+        }
+        setValue('name','')
+        setValue('surname','')
+        setValue('phone','')
     }
     return (
         <form className='form-section' onSubmit={handleSubmit(onSubmit)}>
@@ -30,7 +45,7 @@ function Form({state, setState}) {
                 </div>
                 <div className='input-element'>
                     <label>Telefon:</label>
-                    <input type='text' name='phone' ref={register} className='task-2-input'/>
+                    <input type='number' name='phone' ref={register} className='task-2-input phone'/>
                 </div>
             </div>
             <button type='submit' className='button task-2-button'>tıkla</button>

@@ -3,12 +3,10 @@ import {FiEdit3} from 'react-icons/fi'
 import {AiFillDelete} from 'react-icons/ai'
 
 function tableItem(props) {
-    console.log(props.index)
     
-    const handleEditClick= () => {
-        props.setValue(`name`,props.name)
-        props.setValue('surname', props.surname)
-        props.setValue('phone',props.phone)
+    const handleEditClick= (e) => {
+        console.log(typeof e.target.id)
+        props.setId(e.target.id)
     }
 
     return (
