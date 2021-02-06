@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+---
+permalink: /index.html
+---
+
+>>>>>>> b9a84aabcd00e18053781f777467108c356c7e76
 # Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
