@@ -21,8 +21,8 @@ function TaskThree() {
     }
 
     return (
-        <div className="App">
-                <Link className='button' to='/'>
+        <div className="widget-app">
+                <Link className='button widget-button' to='/'>
                     Geri Dön
                 </Link>
             <div className='container widget-container'>

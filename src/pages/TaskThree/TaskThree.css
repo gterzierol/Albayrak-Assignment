@@ -1,3 +1,16 @@
+.widget-app {
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.widget-button{
+    margin-bottom:40px
+}
+
+
 .widget-container{
     border:2px solid #696969;
     border-radius: 10px;
