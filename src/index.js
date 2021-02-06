@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import TaskOne from './pages/TaskOne/TaskOne';
 import TaskTwo from './pages/TaskTwo/TaskTwo';
+import TaskThree from './pages/TaskThree/TaskThree';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +23,9 @@ ReactDOM.render(
         </Route>
         <Route path="/task-2">
           <TaskTwo/>
+        </Route>
+        <Route path="/task-3">
+          <TaskThree/>
         </Route>
       </Switch>
     </Router>

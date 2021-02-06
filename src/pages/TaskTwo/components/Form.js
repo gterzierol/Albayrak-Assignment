@@ -1,15 +1,14 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 
-function Form({state, setState, id, setId}) {
+function Form({list, setList, id, setId}) {
     const{register, handleSubmit, setValue} = useForm();
 
     React.useEffect(()=> {
         if(id){
-            console.log(id)
-            setValue('name',state[id].name)
-            setValue('surname',state[id].surname)
-            setValue('phone',state[id].phone)
+            setValue('name',list[id].name)
+            setValue('surname',list[id].surname)
+            setValue('phone',list[id].phone)
         }
     },[id])
 
@@ -18,15 +17,13 @@ function Form({state, setState, id, setId}) {
             return
         }
         if(id){
-            const newArr = state.slice(0,id);
-            const lastArr = state.slice(id+1);
+            const newArr = list.slice(0,id);
+            const lastArr = list.slice(id+1);
             const restArr = newArr.concat(data).concat(lastArr)
-            setState(restArr)
-            console.log(restArr)
+            setList(restArr)
             setId(null)
         }else{
-            setState([...state, data])
-            console.log(state)
+            setList([...list, data])
         }
         setValue('name','')
         setValue('surname','')

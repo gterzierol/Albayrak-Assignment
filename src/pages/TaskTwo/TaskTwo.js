@@ -8,17 +8,33 @@ import TableItem from './components/tableItem'
 import './TaskTwo.css'
 
 function TaskTwo() {
-    const [state, setState] = React.useState([])
+    const [list, setList] = React.useState([])
+    const [sort, setSort] = React.useState('0');
     const [id, setId] = React.useState(null)
     const [searchValue, setSearchValue] = React.useState("");
     const{setValue} = useForm();
     
+    const handleSort = (status) => {
+        setSort(status)
+    }
+    const sortItems = () => {
+        let items = [...list];
+        console.log(typeof sort)
+        sort === '0'
+        ? items.sort((a,b)=>  a.name.localeCompare(b.name)) 
+        : items.sort((a,b)=>  b.name.localeCompare(a.name))
+
+        return searchValue
+        ? items.filter((val) => val.name.toLowerCase().includes(searchValue.toLowerCase()))
+        : items
+    }
+
     return (
         <div className='App'>
             <div className='container'>
                 <Link className='button back' to='/'>Geri Dön</Link>
 
-                <Form state={state} setState={setState} id={id} setId={setId}/>
+                <Form list={list} setList={setList} id={id} setId={setId}/>
                 
                 <div className='table'>
                     <div className='table-header'>
@@ -26,7 +42,7 @@ function TaskTwo() {
                             <input type='text' placeholder='Ara...' onChange={(e)=> setSearchValue(e.target.value)}/>
                         </div>
                         <div>
-                            <Dropdown state={state} setState={setState}/>
+                            <Dropdown sort={sort} handleSort={handleSort}/>
                         </div>
                     </div>
                     <div className='table-body'>
@@ -44,17 +60,9 @@ function TaskTwo() {
                                 işlemler
                             </div>
                         </div>
-                        {state && state.filter((val)=>{
-                            if(searchValue === ""){
-                                return val
-                            }
-                            if(val.name.toLowerCase().includes(searchValue.toLowerCase())){
-                                console.log(val.name)
-                                return val
-                            }
-                        }).map((item,index)=> {
+                        {list.length > 0 && sortItems().map((item,index)=> {
                                 return (
-                                    <TableItem setState={setState} state={state} setId={setId} setValue={setValue} key={index} name={item.name} surname={item.surname} phone={item.phone} index={index}/>
+                                    <TableItem setList={setList} list={list} setId={setId} setValue={setValue} key={index} name={item.name} surname={item.surname} phone={item.phone} index={index}/>
                                 )
                         })}
                     </div>

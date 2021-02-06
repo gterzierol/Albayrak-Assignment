@@ -5,15 +5,13 @@ import {AiFillDelete} from 'react-icons/ai'
 function tableItem(props) {
     
     const handleEditClick= (e) => {
-        console.log(typeof e.target.id)
         props.setId(e.target.id)
     }
     const handleDeleteClick = (e) => {
-        const newArr = props.state.slice(0,e.target.id);
-        const lastArr = props.state.slice(e.target.id+1);
+        const newArr = props.list.slice(0,e.target.id);
+        const lastArr = props.list.slice(e.target.id+1);
         const restArr = newArr.concat(lastArr)
-        console.log(restArr)
-        props.setState(restArr);
+        props.setList(restArr);
     }
     return (
             <div className='items'>
