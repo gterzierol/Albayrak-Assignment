@@ -8,7 +8,13 @@ function tableItem(props) {
         console.log(typeof e.target.id)
         props.setId(e.target.id)
     }
-
+    const handleDeleteClick = (e) => {
+        const newArr = props.state.slice(0,e.target.id);
+        const lastArr = props.state.slice(e.target.id+1);
+        const restArr = newArr.concat(lastArr)
+        console.log(restArr)
+        props.setState(restArr);
+    }
     return (
             <div className='items'>
                 <div className='item'>
@@ -24,7 +30,7 @@ function tableItem(props) {
                     <div id={props.index} onClick={handleEditClick}>
                         <FiEdit3 id={props.index} className='icon'/>
                     </div>
-                    <div id={props.index} onClick={handleEditClick}>
+                    <div id={props.index} onClick={handleDeleteClick}>
                         <AiFillDelete id={props.index} className='icon'/>
                     </div>
                 </div>

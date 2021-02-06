@@ -20,7 +20,7 @@ function TaskOne() {
             <div className='container'>
                 <div className='form-section'>
                     <input className='input' type='number' value={value} onChange={onChangeHandler}/>
-                    <button className='button' onClick={findDuplicatedValue}>Hesapla</button>
+                    <button className='button calculate' onClick={findDuplicatedValue}>Hesapla</button>
                 </div>
                 {result && <div className='result'>Sonuç= {result}</div>}
                 <Link className='button turn-back' to="/"> Geri Dön</Link>

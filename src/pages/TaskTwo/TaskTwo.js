@@ -1,5 +1,7 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
+import { Link } from 'react-router-dom';
+
 import Dropdown from './components/Dropdown'
 import Form from './components/Form'
 import TableItem from './components/tableItem'
@@ -14,6 +16,7 @@ function TaskTwo() {
     return (
         <div className='App'>
             <div className='container'>
+                <Link className='button back' to='/'>Geri Dön</Link>
 
                 <Form state={state} setState={setState} id={id} setId={setId}/>
                 
@@ -23,7 +26,7 @@ function TaskTwo() {
                             <input type='text' placeholder='Ara...' onChange={(e)=> setSearchValue(e.target.value)}/>
                         </div>
                         <div>
-                            <Dropdown/>
+                            <Dropdown state={state} setState={setState}/>
                         </div>
                     </div>
                     <div className='table-body'>
@@ -51,7 +54,7 @@ function TaskTwo() {
                             }
                         }).map((item,index)=> {
                                 return (
-                                    <TableItem setId={setId} setValue={setValue} key={index} name={item.name} surname={item.surname} phone={item.phone} index={index}/>
+                                    <TableItem setState={setState} state={state} setId={setId} setValue={setValue} key={index} name={item.name} surname={item.surname} phone={item.phone} index={index}/>
                                 )
                         })}
                     </div>

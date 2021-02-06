@@ -46,6 +46,9 @@
     width: 100%;
     border-bottom:2px solid #525252;
 }
+.back{
+    margin-bottom:40px
+}
 .name-title{
     display: flex;
     justify-content: center;
